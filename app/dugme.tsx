@@ -1,24 +1,24 @@
-"use client"
 interface Params {
     tip:string;
     children: React.ReactNode;
+    onClick?: () => void;
 }
-export default function Dugme(params:Params) {
+export default function Dugme({tip, children, onClick}:Params) {
   let name = "";
 
-  if (params.tip === "warning") {
-    name = "bg-orange-600 hever:orange-900 py-1 px-3 text-center";
-  } else if (params.tip === "not-warning") {
-    name = "bg-green-600";
+  if (tip === "warning") {
+    name = "bg-orange-600 hover:bg-sky-700 py-1 px-3 text-center";
+  } else if (tip === "not-warning") {
+    name = "bg-green-600 hover:bg-orange-700 py-1 px-3 text-center";
   }
 
   return (
     <button
       className={name}
-      onClick={() => alert("tadija smrad")}
+      onClick={onClick}
     >
       
-      {params.children}
+      {children}
     </button>
   );
 }
